@@ -1,0 +1,49 @@
+Il y a 3 types d'agents :
+	- 	agent de simulation qui s'occupe d'envoyer des notifs aux agents d'analyse
+	- 	l'agent d'analyse s'occupe d'une ligne, d'une colonne ou d'un carré donc de 9 cases.
+		il y a donc 27 agents d'analyse.
+	- 	agent d'environnement est chargé de la mise à jour du sudoku
+
+
+Un sudoku est une grille de cellules ayant un contenu et des valeurs encore possibles de contenu.
+Chaque cellule : contenu | valeurs possibles
+
+Il y a 27 agents d'analyse, chacun s'occupe soit d'une ligne, soit d'une colonne, soit d'un carré.
+Il ne sait pas de quoi il s'occupe. Peu importe. Le seul à le savoir c'est agent de simulation ?
+
+Comment on représente la matrice de Sudoku ?
+Array[9][9]
+Agent de simulation envoie un message de ce type { "AgentAnalyse 3" : {1 2 3 4 0 0 8 9 0} }
+
+
+Agent de simulation envoie
+
+
+On génère la matrice !
+C'est l'agent de simulation qui la reçoit !
+L'agent de simulation attribue une ligne, une colonne ou une carré à chaque agent d'analyse
+son behaviour : cyclic : il reçoit la matrice en :envoie des messages de type requête aux agents d'analyse
+Il envoie tous les messages aux différents agents.
+
+Agent d'analyse reçoit juste une copie de la ligne !
+Il fait son analyse !
+Il retourne les cellules mises à jour à l'agent de simulation.
+
+L'agent de simulation attend toutes les réponses
+Et quand il a toutes les réponses des agents d'analyse, l'agent de simulation envoie à l'agent d'nevironnement !
+
+C'est l'agent d'environnement qui se débrouille pour gérer les conflits.
+Pour chaque cellule, il compare les 3 listes.
+Si ça va pas (comme exemple 1, par ex on met 1 c'est good pour la ligne mais quand on prend le carré en compte c'est plus good)
+alors l'agent d'environnement met à 0 la cellule et c'est l'agent d'analyse qui ensuite va tenter une nouvelle valeur.
+
+{
+	1 : "002000079",
+	...
+	9
+	10
+	..
+	18
+	19
+	27
+}

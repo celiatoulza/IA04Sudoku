@@ -1,0 +1,8 @@
+public class AgentSimulation extends Agent {
+	public static String PROPERTIES_FILE = "td3/propertybis";
+
+	public void setup() {
+		System.out.println( "Yo je suis " + getLocalName() );
+
+		addBehaviour( new TransmitMessageBehaviour() );
+	}

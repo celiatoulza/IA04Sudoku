@@ -1,0 +1,5 @@
+Il y a 3 types d'agents :
+	- 	agent de simulation qui s'occupe d'envoyer des notifs aux agents d'analyse
+	- 	l'agent d'analyse s'occupe d'une ligne, d'une colonne ou d'un carré donc de 9 cases.
+		il y a donc 27 agents d'analyse.
+	- 	agent d'environnement est chargé de la simulation du sudoku
